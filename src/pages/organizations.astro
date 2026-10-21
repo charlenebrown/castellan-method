@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import PressStrip from '../components/PressStrip.astro';
+
+const stages = [
+  { n: '1', t: 'Confidential briefing', d: 'A 45-minute conversation with your sponsor. We discuss goals, constraints and who needs to be involved. NDA available first.', time: 'Week 1' },
+  { n: '2', t: 'Diagnostic', d: 'Short interviews and a team survey show where attention, connection and confidence are strongest and weakest.', time: 'Weeks 2 to 5' },
+  { n: '3', t: 'Program design', d: 'A written proposal with scope, schedule, success measures and a clear price. No surprises.', time: 'Week 6' },
+  { n: '4', t: 'Delivery', d: 'Leader cohorts, team sessions and manager toolkits, delivered on site or online across your offices.', time: 'Months 2 to 9' },
+  { n: '5', t: 'Handover', d: 'Your people leave able to run the practices themselves. Optional retainer for ongoing advice.', time: 'Final month' },
+];
+
+const formats = [
+  ['Executive leadership program', 'For the top 15 to 40 leaders: cohorts, one-to-one advisory and team agreements.'],
+  ['Multi-team rollout', 'The Castellan Method across many teams, with trained internal facilitators.'],
+  ['Advisory retainer', 'Standing access for the CEO or leadership team through a year of change.'],
+  ['Keynote or leadership event', 'A research-led talk or workshop for conferences and off-sites.'],
+];
+
+const procurement = [
+  ['NDA first', 'Mutual NDA available before any sensitive discussion. Your paper or ours.'],
+  ['Clear paperwork', 'Master services agreement, statement of work, invoicing to your standard terms.'],
+  ['Data care', 'Survey data is aggregated and anonymized. Individual responses are never shared with your leadership.'],
+  ['Single point of contact', 'A named engagement lead and a monthly steering update.'],
+];
+---
+
+<Base title="Organizations" description="A confidential briefing path for larger companies and institutions: diagnostic, program design and delivery with clear scope.">
+  <section class="on-dark bg-navy text-bone">
+    <div class="wrap grid items-center gap-10 py-20 md:py-28 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <p class="eyebrow reveal">For organizations</p>
+        <h1 class="display reveal mt-4">Team confidence, at the scale of your organization.</h1>
+        <p class="lede reveal mt-6 text-bone/80">Larger engagements need a different front door: confidential, scoped, and easy to take through procurement. This is it.</p>
+        <div class="reveal mt-9 flex flex-wrap gap-3">
+          <button type="button" data-apply="organization" class="btn btn-brass">Request a confidential briefing</button>
+        </div>
+      </div>
+      <aside class="reveal rounded-3xl border border-bone/20 p-7" aria-label="At a glance">
+        <p class="eyebrow">At a glance</p>
+        <dl class="mt-5 grid gap-4 text-sm">
+          <div><dt class="text-bone/55">Typical size</dt><dd class="font-serif text-xl">250 to 20,000+ people</dd></div>
+          <div><dt class="text-bone/55">Typical length</dt><dd class="font-serif text-xl">6 to 12 months</dd></div>
+          <div><dt class="text-bone/55">Where</dt><dd class="font-serif text-xl">Boston, New York, online</dd></div>
+          <div><dt class="text-bone/55">First reply</dt><dd class="font-serif text-xl">Within two business days</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <PressStrip />
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="h2 reveal">How an engagement unfolds</h2>
+      <ol class="mt-12 grid gap-px overflow-hidden rounded-3xl border border-charcoal/15 bg-charcoal/15 md:grid-cols-5">
+        {stages.map((s) => (
+          <li class="reveal flex flex-col bg-bone p-6">
+            <span class="font-serif text-3xl text-brass">{s.n}</span>
+            <h3 class="mt-3 text-xl">{s.t}</h3>
+            <p class="mt-2 text-sm text-charcoal/75">{s.d}</p>
+            <p class="mt-auto pt-4 text-xs font-semibold uppercase tracking-wider text-oxblood-deep">{s.time}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section bg-bone-deep/50">
+    <div class="wrap grid gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="h2 reveal">Engagement formats</h2>
+        <dl class="mt-8 divide-y divide-charcoal/15 border-y border-charcoal/15">
+          {formats.map(([t, d]) => (
+            <div class="reveal py-5"><dt class="font-serif text-xl">{t}</dt><dd class="mt-1 text-charcoal/75">{d}</dd></div>
+          ))}
+        </dl>
+      </div>
+      <div>
+        <h2 class="h2 reveal">Built for procurement</h2>
+        <ul class="mt-8 grid gap-5">
+          {procurement.map(([t, d]) => (
+            <li class="reveal card !p-5"><h3 class="text-lg">{t}</h3><p class="mt-1 text-sm text-charcoal/75">{d}</p></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark section bg-navy text-bone">
+    <div class="wrap text-center">
+      <h2 class="h2 reveal mx-auto max-w-2xl">Start with a confidential briefing.</h2>
+      <p class="lede reveal mx-auto mt-5 text-bone/75">Tell us a little about your organization. We reply within two business days.</p>
+      <div class="reveal mt-9"><button type="button" data-apply="organization" class="btn btn-brass">Request a briefing</button></div>
+    </div>
+  </section>
+</Base>

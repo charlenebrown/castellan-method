@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Privacy" description="How this demonstration site handles information.">
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1 class="display mt-4" style="font-size: clamp(2.2rem, 5vw, 3.6rem)">Privacy notice</h1>
+      <div class="prose-c mt-10">
+        <p class="rounded-xl bg-brass/15 px-4 py-3 text-base">This is a fictional demonstration site. The notice below describes how the demonstration works and is not a legal document for a real business.</p>
+        <h2>What this site stores</h2>
+        <p>Forms on this site (the application, the booking calendar and the Team Cohesion Check) run entirely in your browser. Anything you type is saved only in your browser's local storage so that a half-finished form can be restored. It is never sent to a server.</p>
+        <h2>What this site does not do</h2>
+        <ul>
+          <li>It does not send your entries to anyone.</li>
+          <li>It does not use advertising trackers.</li>
+          <li>It does not make real bookings or take payments.</li>
+        </ul>
+        <h2>Third-party services</h2>
+        <p>Fonts load from Google Fonts. The Team Cohesion Check loads the Pyodide runtime from the jsDelivr network when you start the quiz. These services may see your IP address, as with any web request.</p>
+        <h2>Clearing your data</h2>
+        <p>You can remove everything stored by this site by clearing site data in your browser settings.</p>
+        <h2>Contact</h2>
+        <p>Because this site is fictional, there is no contact address. If you adapt this template for a real business, replace this notice with one reviewed by a qualified professional.</p>
+      </div>
+    </div>
+  </section>
+</Base>

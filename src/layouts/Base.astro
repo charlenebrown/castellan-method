@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ApplyModal from '../components/ApplyModal';
+import { url } from '../lib/url';
+
+interface Props {
+  title: string;
+  description?: string;
+  dark?: boolean;
+}
+const { title, description = 'Dr. Naomi Castellan helps executive teams stay confident and connected while technology reshapes how they work.', dark = false } = Astro.props;
+const fullTitle = title === 'Home' ? 'Dr. Naomi Castellan | The Castellan Method' : `${title} | Dr. Naomi Castellan`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0f1b33" />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>document.documentElement.classList.remove('no-js');</script>
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-navy focus:px-5 focus:py-3 focus:text-bone">Skip to content</a>
+    <Header transparent={dark} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <ApplyModal client:load base={url('/')} />
+    <div id="toast" role="status" aria-live="polite" class="pointer-events-none fixed bottom-6 left-1/2 z-[90] -translate-x-1/2 translate-y-4 rounded-full bg-navy px-5 py-3 text-sm text-bone opacity-0 shadow-xl transition duration-300"></div>
+
+    <script is:inline>
+      // Toast for demo-only buttons (purchase, listen, etc.)
+      (function () {
+        var toast = document.getElementById('toast');
+        var timer;
+        document.addEventListener('click', function (e) {
+          var el = e.target.closest('[data-demo]');
+          if (!el) return;
+          e.preventDefault();
+          toast.textContent = el.getAttribute('data-demo');
+          toast.style.opacity = 1;
+          toast.style.transform = 'translate(-50%, 0)';
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            toast.style.opacity = 0;
+            toast.style.transform = 'translate(-50%, 1rem)';
+          }, 2800);
+        });
+
+        // Scroll reveal
+        var items = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window)) { items.forEach(function (i) { i.classList.add('in'); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        items.forEach(function (i) { io.observe(i); });
+      })();
+    </script>
+  </body>
+</html>

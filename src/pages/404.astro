@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+---
+
+<Base title="Page not found">
+  <section class="section">
+    <div class="wrap text-center">
+      <p class="eyebrow">404</p>
+      <h1 class="display mt-4">That page has gone quiet.</h1>
+      <p class="lede mx-auto mt-6 text-charcoal/75">Let’s get you back to something useful.</p>
+      <div class="mt-8 flex justify-center gap-3"><a href={url('/')} class="btn btn-primary">Home</a><a href={url('/insights/')} class="btn btn-ghost">Read insights</a></div>
+    </div>
+  </section>
+</Base>

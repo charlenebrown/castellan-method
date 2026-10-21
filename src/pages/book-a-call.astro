@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import BookingCalendar from '../components/BookingCalendar';
+---
+
+<Base title="Book a Call" description="Book a complimentary 30-minute introductory conversation with Dr. Naomi Castellan.">
+  <section class="section">
+    <div class="wrap">
+      <div class="max-w-3xl">
+        <p class="eyebrow reveal">Free introductory call</p>
+        <h1 class="display reveal mt-4">Thirty minutes. No pitch.</h1>
+        <p class="lede reveal mt-6 text-charcoal/80">We talk through what you are facing, and I tell you honestly whether and how I can help. Pick a time below.</p>
+        <p class="reveal mt-4 inline-block rounded-full bg-brass/20 px-4 py-1.5 text-xs font-semibold">Demonstration: no real booking is made.</p>
+      </div>
+      <div class="mt-12">
+        <BookingCalendar client:only="react" />
+      </div>
+    </div>
+  </section>
+</Base>

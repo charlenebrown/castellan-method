@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import PressStrip from '../components/PressStrip.astro';
+import Cta from '../components/Cta.astro';
+import { episodes } from '../data/site';
+---
+
+<Base title="Media" description="The Connected Leader podcast, the Leading in the Loop video series, and press features.">
+  <section class="section !pb-8">
+    <div class="wrap max-w-4xl">
+      <p class="eyebrow reveal">Media</p>
+      <h1 class="display reveal mt-4">Listen, watch, and borrow the ideas.</h1>
+    </div>
+  </section>
+
+  <PressStrip />
+
+  <section class="section">
+    <div class="wrap grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+      <div class="reveal">
+        <p class="eyebrow">Podcast</p>
+        <h2 class="h2 mt-4">The Connected Leader</h2>
+        <p class="mt-5 text-charcoal/80">Weekly conversations about leading people well in a digital age. More than six million listens, with guests from boardrooms, labs and the front line.</p>
+        <p class="mt-6 flex flex-wrap gap-2">
+          {['Apple Podcasts', 'Spotify', 'YouTube Music'].map((p) => <button type="button" data-demo="Demo site: this would open the show on a podcast app." class="btn btn-ghost !py-2 !text-sm">{p}</button>)}
+        </p>
+      </div>
+      <ol class="reveal divide-y divide-charcoal/15 border-y border-charcoal/15">
+        {episodes.map((e) => (
+          <li class="flex items-center gap-4 py-5">
+            <button type="button" data-demo="Demo site: audio playback is not included." aria-label={`Play episode ${e.n}: ${e.title}`} class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-oxblood text-bone transition hover:bg-oxblood-deep">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" /></svg>
+            </button>
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-semibold uppercase tracking-wider text-charcoal/50">Episode {e.n} · {e.guest}</p>
+              <p class="truncate font-serif text-lg sm:text-xl">{e.title}</p>
+            </div>
+            <div class="hidden text-right text-sm text-charcoal/60 sm:block"><p>{e.length}</p><p>{e.listens} listens</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="on-dark section bg-navy text-bone">
+    <div class="wrap grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+      <button type="button" data-demo="Demo site: the video would play here." class="reveal group relative block aspect-video overflow-hidden rounded-3xl bg-navy-soft text-left ring-1 ring-bone/15" aria-label="Play sample video: Why Teams Go Quiet">
+        <svg viewBox="0 0 640 360" class="absolute inset-0 h-full w-full" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a2a4a" /><stop offset="1" stop-color="#7a2e2e" stop-opacity="0.7" /></linearGradient></defs>
+          <rect width="640" height="360" fill="url(#vg)" />
+          <circle cx="470" cy="150" r="130" fill="#b08a4a" opacity="0.16" />
+        </svg>
+        <span class="absolute inset-0 grid place-items-center">
+          <span class="grid h-20 w-20 place-items-center rounded-full bg-bone text-oxblood shadow-2xl transition group-hover:scale-110">
+            <svg width="28" height="28" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" /></svg>
+          </span>
+        </span>
+        <span class="absolute bottom-5 left-5 right-5"><span class="eyebrow">Sample video</span><span class="mt-1 block font-serif text-2xl">Why Teams Go Quiet</span></span>
+      </button>
+      <div class="reveal">
+        <p class="eyebrow">YouTube</p>
+        <h2 class="h2 mt-4">Leading in the Loop</h2>
+        <p class="lede mt-5 text-bone/75">Short, practical videos for leaders who want one idea they can use today. Over two million views.</p>
+        <button type="button" data-demo="Demo site: this would open the channel." class="btn btn-brass mt-8">Visit the channel</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="h2 reveal">Invite Dr. Castellan</h2>
+      <p class="lede reveal mt-4 text-charcoal/80">Keynotes, podcast guesting, and expert commentary on teams, technology and trust.</p>
+      <div class="reveal mt-8"><button type="button" data-apply="organization" class="btn btn-primary">Send an inquiry</button></div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>

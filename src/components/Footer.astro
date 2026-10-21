@@ -1,0 +1,33 @@
+---
+import { nav, brand } from '../data/site';
+import { url } from '../lib/url';
+const year = new Date().getFullYear();
+---
+
+<footer class="on-dark bg-navy text-bone">
+  <div class="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <p class="font-serif text-3xl">{brand.person}</p>
+      <p class="mt-3 max-w-xs text-bone/70">{brand.tagline}</p>
+      <p class="mt-6 text-sm text-bone/60">Professor in New York.<br />Advising leadership teams in Boston.</p>
+      <button type="button" data-apply class="btn btn-brass mt-8">Apply for consulting</button>
+    </div>
+    <nav aria-label="Footer" class="grid content-start gap-2.5 text-sm">
+      <p class="eyebrow mb-2">Explore</p>
+      {nav.map((n) => <a href={url(n.href)} class="text-bone/80 hover:text-brass-light">{n.label}</a>)}
+      <a href={url('/book-a-call/')} class="text-bone/80 hover:text-brass-light">Book a call</a>
+    </nav>
+    <div class="grid content-start gap-2.5 text-sm">
+      <p class="eyebrow mb-2">Legal</p>
+      <a href={url('/privacy/')} class="text-bone/80 hover:text-brass-light">Privacy</a>
+      <a href={url('/terms/')} class="text-bone/80 hover:text-brass-light">Terms</a>
+      <a href={url('/disclaimer/')} class="text-bone/80 hover:text-brass-light">Disclaimer</a>
+    </div>
+  </div>
+  <div class="border-t border-bone/15">
+    <div class="wrap flex flex-col gap-2 py-6 text-xs text-bone/60 sm:flex-row sm:justify-between">
+      <p>© {year} The Castellan Method. All rights reserved.</p>
+      <p><strong class="font-semibold text-bone/80">Fictional demonstration site.</strong> The person, firm, press, statistics and bookings shown are invented. Nothing here can be purchased or booked.</p>
+    </div>
+  </div>
+</footer>

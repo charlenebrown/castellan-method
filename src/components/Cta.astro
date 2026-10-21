@@ -1,0 +1,18 @@
+---
+import { url } from '../lib/url';
+interface Props { heading?: string; text?: string }
+const { heading = 'Start with a conversation.', text = 'Thirty minutes, no pitch. We talk through what you are facing and whether I can help.' } = Astro.props;
+---
+
+<section class="on-dark section bg-navy text-bone">
+  <div class="wrap grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
+    <div class="reveal">
+      <h2 class="h2">{heading}</h2>
+      <p class="lede mt-5 text-bone/75">{text}</p>
+    </div>
+    <div class="reveal flex flex-wrap gap-3 md:justify-end">
+      <a href={url('/book-a-call/')} class="btn btn-brass">Book a free call</a>
+      <button type="button" data-apply class="btn btn-ghost">Apply for consulting</button>
+    </div>
+  </div>
+</section>

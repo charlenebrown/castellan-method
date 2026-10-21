@@ -1,0 +1,61 @@
+---
+import { nav } from '../data/site';
+import { url } from '../lib/url';
+interface Props { transparent?: boolean }
+const { transparent = false } = Astro.props;
+const path = Astro.url.pathname.replace(url('/'), '/').replace(/\/$/, '') || '/';
+const isActive = (href: string) => href.replace(/\/$/, '') === path;
+---
+
+<header id="site-header" class:list={['sticky top-0 z-50 transition-colors duration-300', transparent ? 'on-dark bg-navy/80 text-bone backdrop-blur' : 'bg-bone/90 text-charcoal backdrop-blur border-b border-bone-deep']}>
+  <div class="wrap flex items-center justify-between py-4">
+    <a href={url('/')} class="flex flex-col leading-none" aria-label="The Castellan Method, home">
+      <span class="font-serif text-xl font-semibold tracking-tight">Castellan</span>
+      <span class="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.28em] opacity-70">The Method</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden items-center gap-8 lg:flex">
+      {nav.map((item) => (
+        <a
+          href={url(item.href)}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class="text-sm font-medium opacity-80 transition hover:opacity-100 aria-[current=page]:opacity-100 aria-[current=page]:underline aria-[current=page]:decoration-brass aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8"
+        >{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href={url('/book-a-call/')} class="hidden text-sm font-semibold underline underline-offset-4 sm:inline">Book a call</a>
+      <button type="button" data-apply class:list={['btn !py-2.5 !px-5 !text-sm', transparent ? 'btn-brass' : 'btn-primary']}>Apply</button>
+      <button id="menu-btn" type="button" class="grid h-11 w-11 place-items-center rounded-full border border-current/30 lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" hidden class="border-t border-current/15 lg:hidden">
+    <nav aria-label="Mobile" class="wrap flex flex-col py-4">
+      {nav.map((item) => (
+        <a href={url(item.href)} class="border-b border-current/10 py-3.5 text-lg font-serif">{item.label}</a>
+      ))}
+      <a href={url('/book-a-call/')} class="py-3.5 text-lg font-serif">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      menu.hidden = open;
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { btn.click(); btn.focus(); }
+    });
+  })();
+</script>

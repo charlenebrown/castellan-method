@@ -1,0 +1,74 @@
+{
+  "camera-on-trust-off": {
+    "slug": "camera-on-trust-off",
+    "title": "Camera On, Trust Off? What Video Calls Quietly Cost Teams",
+    "summary": "Seeing faces is not the same as feeling connected. Four small changes that make remote meetings build trust instead of draining it.",
+    "theme": "Leading Through Technology",
+    "tags": [
+      "video calls",
+      "hybrid teams",
+      "trust",
+      "meetings"
+    ],
+    "readingMinutes": 1,
+    "related": [
+      "confidence-is-a-team-practice",
+      "decisions-without-drag",
+      "what-shared-attention-looks-like"
+    ]
+  },
+  "confidence-is-a-team-practice": {
+    "slug": "confidence-is-a-team-practice",
+    "title": "Confidence Is a Team Practice, Not a Personality Trait",
+    "summary": "Teams do not become confident by hiring confident people. They become confident through repeatable habits that make it safe to be wrong.",
+    "theme": "Team Confidence",
+    "tags": [
+      "confidence",
+      "trust",
+      "team habits",
+      "psychological safety"
+    ],
+    "readingMinutes": 1,
+    "related": [
+      "camera-on-trust-off",
+      "decisions-without-drag",
+      "what-shared-attention-looks-like"
+    ]
+  },
+  "decisions-without-drag": {
+    "slug": "decisions-without-drag",
+    "title": "Decisions Without Drag: A One-Page Protocol for Leadership Teams",
+    "summary": "A simple one-page agreement that helps leadership teams decide faster, with fewer meetings and less second-guessing.",
+    "theme": "Executive Practice",
+    "tags": [
+      "decision making",
+      "leadership teams",
+      "meetings",
+      "focus"
+    ],
+    "readingMinutes": 1,
+    "related": [
+      "camera-on-trust-off",
+      "what-shared-attention-looks-like",
+      "confidence-is-a-team-practice"
+    ]
+  },
+  "what-shared-attention-looks-like": {
+    "slug": "what-shared-attention-looks-like",
+    "title": "What Shared Attention Looks Like at Work",
+    "summary": "A short field note on why interruptions fragment teams, and the signals that tell you your team's attention has split.",
+    "theme": "Research Notes",
+    "tags": [
+      "attention",
+      "focus",
+      "notifications",
+      "hybrid teams"
+    ],
+    "readingMinutes": 1,
+    "related": [
+      "camera-on-trust-off",
+      "decisions-without-drag",
+      "confidence-is-a-team-practice"
+    ]
+  }
+}

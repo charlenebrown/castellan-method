@@ -1,0 +1,14 @@
+---
+import { press } from '../data/site';
+interface Props { dark?: boolean }
+const { dark = false } = Astro.props;
+---
+
+<section aria-label="As seen in" class:list={['py-10', dark ? 'on-dark bg-navy text-bone' : 'border-y border-bone-deep']}>
+  <div class="wrap">
+    <p class="eyebrow mb-6 text-center">As seen in</p>
+    <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:justify-between">
+      {press.map((p) => <li><span class:list={['mark', p.cls]}>{p.name}</span></li>)}
+    </ul>
+  </div>
+</section>

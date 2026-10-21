@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import CohesionCheck from '../components/CohesionCheck';
+import { url } from '../lib/url';
+---
+
+<Base title="Team Cohesion Check" description="A two-minute self-assessment across Quiet, Present and Trust, scored by Python running in your browser.">
+  <section class="section">
+    <div class="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div class="lg:sticky lg:top-28 lg:self-start">
+        <p class="eyebrow reveal">Two-minute check</p>
+        <h1 class="h2 reveal mt-4" style="font-size: clamp(2.2rem, 4.6vw, 3.6rem)">Team Cohesion Check</h1>
+        <p class="lede reveal mt-6 text-charcoal/80">Think about the team you lead or belong to. Answer honestly: nobody sees your responses.</p>
+        <p class="reveal mt-6 text-sm text-charcoal/65">Your answers are scored on your own device by a small Python program running in the browser. Nothing is uploaded.</p>
+        <p class="reveal mt-6 text-sm"><a class="link-arrow" href={url('/services/')}>See how the three parts connect to the work</a></p>
+      </div>
+      <div class="reveal"><CohesionCheck client:only="react" base={url('/')} /></div>
+    </div>
+  </section>
+</Base>

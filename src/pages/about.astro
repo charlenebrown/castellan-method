@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import Portrait from '../components/Portrait.astro';
+import Cta from '../components/Cta.astro';
+import { brand } from '../data/site';
+
+const timeline = [
+  { year: '2004', text: 'Begins doctoral research in organizational psychology, studying how groups share attention and make decisions.' },
+  { year: '2009', text: 'Completes her PhD and joins the faculty of a New York university, where she still teaches.' },
+  { year: '2014', text: 'Starts advising leadership teams in Boston, turning research findings into practical team habits.' },
+  { year: '2019', text: 'Launches The Connected Leader podcast, now past six million listens.' },
+  { year: '2021–25', text: 'Publishes the three-book series: The Quiet Team, Present Tense and Trust at Scale.' },
+];
+---
+
+<Base title="About" description="Dr. Naomi Castellan is a professor in New York and executive advisor in Boston, helping leadership teams build lasting confidence.">
+  <section class="section !pb-10">
+    <div class="wrap grid items-end gap-12 lg:grid-cols-[1.2fr_1fr]">
+      <div>
+        <p class="eyebrow reveal">About</p>
+        <h1 class="display reveal mt-4">Research you can use on Monday morning.</h1>
+        <p class="lede reveal mt-6 text-charcoal/80">
+          I study how groups think together, and I help leadership teams act on it. My work sits where psychology meets the calendar: real people, real pressure, real technology.
+        </p>
+      </div>
+      <Portrait class="reveal aspect-[4/5] max-w-md lg:ml-auto" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap"><div class="prose-c">
+      <h2 class="reveal">Why this work</h2>
+      <p class="reveal">I spent years watching capable teams stall, not for lack of talent, but because technology slowly broke the habits that kept them together. Meetings multiplied. Messages piled up. The people with the most to say learned it was easier not to.</p>
+      <p class="reveal">The fix is rarely another tool. It is a handful of repeatable practices, agreed by the team and protected by its leaders. That is what {brand.method} teaches.</p>
+      <blockquote class="reveal">{brand.principle}</blockquote>
+      <h2 class="reveal">How I work</h2>
+      <ul class="reveal">
+        <li><strong>Evidence first.</strong> I draw on published research and test ideas with your team before recommending them.</li>
+        <li><strong>Direct and kind.</strong> You will hear what you need to hear, in a way you can use.</li>
+        <li><strong>Built to last.</strong> Every engagement ends with habits your team owns without me.</li>
+      </ul>
+    </div></div>
+  </section>
+
+  <section class="section bg-bone-deep/50">
+    <div class="wrap">
+      <p class="eyebrow reveal">Path</p>
+      <ol class="mt-8 grid gap-0 border-l border-charcoal/20">
+        {timeline.map((t) => (
+          <li class="reveal relative grid gap-1 pb-9 pl-8 md:grid-cols-[8rem_1fr] md:gap-8">
+            <span class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-oxblood"></span>
+            <span class="font-serif text-2xl text-oxblood-deep">{t.year}</span>
+            <p class="max-w-2xl text-lg">{t.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid gap-10 md:grid-cols-3">
+      {[
+        ['Based in', 'New York, where I teach. I advise teams in Boston, and online elsewhere.'],
+        ['Credentials', 'PhD in Organizational Psychology. Professor, faculty of a New York university.'],
+        ['Recognition', 'Best-selling author. Host of a podcast with more than six million listens. (Demonstration figures.)'],
+      ].map(([h, t]) => (
+        <div class="reveal border-t border-charcoal/20 pt-5"><h3 class="text-xl">{h}</h3><p class="mt-2 text-charcoal/75">{t}</p></div>
+      ))}
+    </div>
+  </section>
+
+  <Cta />
+</Base>
